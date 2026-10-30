@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindIt - Digital Lost & Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar container">
+        <a href="#" class="logo">Find<span>It.</span></a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#items">Browse Items</a>
+            <a href="#myReports">My Reports</a>
+            <a href="#about">About</a>
+        </div>
+
+        <a href="#report" class="nav-btn">Report an Item</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <span class="tag">DIGITAL LOST & FOUND PORTAL</span>
+            <h1>Lost Something?<br>
+                <span>Let's Find It.</span>
+            </h1>
+            <p>
+                A simple platform to report lost items, share found items
+                and help people reconnect with their belongings.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#report" class="primary-btn">Report Lost Item</a>
+                <a href="#items" class="secondary-btn">Browse Found Items</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="image-circle">
+                <div class="search-icon">🔎</div>
+                <div class="floating-card">🎒 Lost Bag</div>
+                <div class="floating-card second">📱 Found Phone</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats container">
+    <div class="stat-card">
+        <h2 id="totalItems">0</h2>
+        <p>Total Reports</p>
+    </div>
+    <div class="stat-card">
+        <h2 id="lostCount">0</h2>
+        <p>Lost Items</p>
+    </div>
+    <div class="stat-card">
+        <h2 id="foundCount">0</h2>
+        <p>Found Items</p>
+    </div>
+    <div class="stat-card">
+        <h2 id="resolvedCount">0</h2>
+        <p>Resolved Items</p>
+    </div>
+</section>
+
+<section class="report-section" id="report">
+    <div class="container">
+        <div class="section-heading">
+            <span class="tag">SUBMIT A REPORT</span>
+            <h2>Report Your Item</h2>
+            <p>Provide item details to help connect lost belongings with their owners.</p>
+        </div>
+
+        <form id="itemForm" class="report-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Report Type</label>
+                    <select id="type" required>
+                        <option value="Lost">I Lost Something</option>
+                        <option value="Found">I Found Something</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="itemName" placeholder="e.g. Black Wallet" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option>Electronics</option>
+                        <option>Bags</option>
+                        <option>Documents</option>
+                        <option>Clothing</option>
+                        <option>Accessories</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="location" placeholder="Where was it lost/found?" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="personName" placeholder="Enter your name" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="description" rows="4" placeholder="Describe the item..." required></textarea>
+            </div>
+            <div class="form-group">
+    <label>Upload Item Image</label>
+    <input type="file" id="itemImage" accept="image/*">
+</div>
+
+            <button type="submit" class="primary-btn submit-btn">Submit Report</button>
+            <p id="formMessage"></p>
+        </form>
+    </div>
+</section>
+
+<section class="items-section container" id="items">
+    <div class="section-heading">
+        <span class="tag">RECENT REPORTS</span>
+        <h2>Explore Lost & Found Items</h2>
+        <p>Browse reports submitted by the community.</p>
+    </div>
+
+    <div class="filter-bar">
+        <input type="search" id="searchInput" placeholder="Search items...">
+
+        <select id="filterType">
+            <option value="All">All Items</option>
+            <option value="Lost">Lost Items</option>
+            <option value="Found">Found Items</option>
+        </select>
+    </div>
+
+    <div class="item-grid" id="itemGrid"></div>
+    <p id="emptyMessage" class="empty-message">No reports available. Submit your first report!</p>
+</section>
+
+<section class="about-section" id="about">
+    <section class="items-section container" id="myReports">
+    <div class="section-heading">
+        <span class="tag">MY ACTIVITY</span>
+        <h2>My Reports</h2>
+        <p>View all the items you have reported.</p>
+    </div>
+
+    <div class="item-grid" id="myReportsGrid"></div>
+    <p id="myEmptyMessage" class="empty-message">
+        You have not submitted any reports yet.
+    </p>
+</section>
+    <div class="container about-content">
+        <span class="tag">ABOUT FINDIT</span>
+        <h2>Making Lost Things Found Again.</h2>
+        <p>
+            FindIt is a digital lost-and-found platform designed for public
+            spaces. It helps people report lost belongings and share details
+            about items they have found.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-content">
+        <h2>FindIt.</h2>
+        <p>Digital Lost & Found for Public Spaces</p>
+        <p>© 2026 FindIt. CEP Project.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
